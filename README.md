@@ -32,6 +32,20 @@ and `muse-cli goals`, then reports back.
 
 ![Droid agent using muse-cli to check status and goals](https://raw.githubusercontent.com/nikships/muse-cli/main/assets/demo-agent.png)
 
+## Agent mesh
+
+`skills/muse-mesh/` is a conventions layer for driving Pip (Tony's personal
+Muse agent) as one node in a multi-agent fleet. It adds what the stock skill
+deliberately leaves out: mandatory `[via X]` identity tags on every send,
+per-agent bridge side chats (agent traffic never touches the main chat),
+read-only-by-default with explicit approval for the first send, a two-hop
+loop guard, secret hygiene for the cookies file, and verb-based rules for the
+`raw` escape hatch (GETs are reads; POST/PATCH/DELETE need per-action approval).
+
+The stock `skills/muse-cli/` skill stays pristine so upstream syncs stay clean;
+all mesh rules live in `muse-mesh`. See that skill's Deploy section for the
+universal-skills-directory setup.
+
 ## Quick Start
 
 ```bash
